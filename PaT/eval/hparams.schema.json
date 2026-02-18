@@ -1,0 +1,323 @@
+{
+  "$defs": {
+    "_HP_Method_PaT": {
+      "properties": {
+        "method_name": {
+          "const": "PaT",
+          "default": "PaT",
+          "title": "Method Name"
+        },
+        "dfs_max_depth": {
+          "title": "Dfs Max Depth",
+          "type": "integer"
+        },
+        "divide_gen_prompt": {
+          "$ref": "#/$defs/_HP_Prompt_GenOnce"
+        },
+        "divide_temperature": {
+          "title": "Divide Temperature",
+          "type": "number"
+        },
+        "divide_retries": {
+          "title": "Divide Retries",
+          "type": "integer"
+        },
+        "fc_root_test_prompt": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/_HP_Prompt_MakeTest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fc_root_sys_test_prompt": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/_HP_Prompt_MakeTest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fc_branch_test_prompt": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/_HP_Prompt_MakeTest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fc_branch_sys_test_prompt": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/_HP_Prompt_MakeTest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fc_temperature": {
+          "title": "Fc Temperature",
+          "type": "number"
+        },
+        "fc_retries": {
+          "title": "Fc Retries",
+          "type": "integer"
+        },
+        "conquer_gen_prompt": {
+          "$ref": "#/$defs/_HP_Prompt_GenOnce"
+        },
+        "conquer_temperature": {
+          "title": "Conquer Temperature",
+          "type": "number"
+        },
+        "conquer_samples": {
+          "title": "Conquer Samples",
+          "type": "integer"
+        },
+        "conquer_min_samples": {
+          "title": "Conquer Min Samples",
+          "type": "integer"
+        },
+        "conquer_retries": {
+          "title": "Conquer Retries",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "dfs_max_depth",
+        "divide_gen_prompt",
+        "divide_temperature",
+        "divide_retries",
+        "fc_root_test_prompt",
+        "fc_root_sys_test_prompt",
+        "fc_branch_test_prompt",
+        "fc_branch_sys_test_prompt",
+        "fc_temperature",
+        "fc_retries",
+        "conquer_gen_prompt",
+        "conquer_temperature",
+        "conquer_samples",
+        "conquer_min_samples",
+        "conquer_retries"
+      ],
+      "title": "_HP_Method_PaT",
+      "type": "object"
+    },
+    "_HP_Method_Vanilla": {
+      "properties": {
+        "method_name": {
+          "const": "vanilla",
+          "default": "vanilla",
+          "title": "Method Name"
+        },
+        "gen_prompt": {
+          "$ref": "#/$defs/_HP_Prompt_GenOnce"
+        },
+        "temperature": {
+          "title": "Temperature",
+          "type": "number"
+        },
+        "retries": {
+          "title": "Retries",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "gen_prompt",
+        "temperature",
+        "retries"
+      ],
+      "title": "_HP_Method_Vanilla",
+      "type": "object"
+    },
+    "_HP_Prompt_GenOnce": {
+      "enum": [
+        "humaneval_divide",
+        "humaneval_conquer",
+        "maths_divide",
+        "maths_conquer",
+        "xcodeeval_divide",
+        "xcodeeval_conquer"
+      ],
+      "title": "_HP_Prompt_GenOnce",
+      "type": "string"
+    },
+    "_HP_Prompt_MakeTest": {
+      "enum": [
+        "humaneval_funccall",
+        "humaneval_argsmaker",
+        "humaneval_unittest",
+        "injected_expr",
+        "injected_stdio",
+        "injected_tests",
+        "sys_test_args",
+        "xcodeeval_funccall",
+        "xcodeeval_unittest"
+      ],
+      "title": "_HP_Prompt_MakeTest",
+      "type": "string"
+    },
+    "_HP_Task_HumanEval": {
+      "properties": {
+        "task_name": {
+          "const": "HumanEval",
+          "default": "HumanEval",
+          "title": "Task Name"
+        },
+        "task_samples": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Task Samples"
+        }
+      },
+      "required": [
+        "task_samples"
+      ],
+      "title": "_HP_Task_HumanEval",
+      "type": "object"
+    },
+    "_HP_Task_MBPP": {
+      "properties": {
+        "task_name": {
+          "const": "MBPP",
+          "default": "MBPP",
+          "title": "Task Name"
+        },
+        "task_samples": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Task Samples"
+        }
+      },
+      "required": [
+        "task_samples"
+      ],
+      "title": "_HP_Task_MBPP",
+      "type": "object"
+    },
+    "_HP_Task_xCodeEval": {
+      "properties": {
+        "task_name": {
+          "const": "xCodeEval",
+          "default": "xCodeEval",
+          "title": "Task Name"
+        },
+        "task_samples": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Task Samples"
+        }
+      },
+      "required": [
+        "task_samples"
+      ],
+      "title": "_HP_Task_xCodeEval",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "$schema": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "$Schema"
+    },
+    "task": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/_HP_Task_HumanEval"
+        },
+        {
+          "$ref": "#/$defs/_HP_Task_MBPP"
+        },
+        {
+          "$ref": "#/$defs/_HP_Task_xCodeEval"
+        }
+      ],
+      "title": "Task"
+    },
+    "langrt": {
+      "title": "Langrt",
+      "type": "string"
+    },
+    "llm_engine": {
+      "title": "Llm Engine",
+      "type": "string"
+    },
+    "method": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/_HP_Method_PaT"
+        },
+        {
+          "$ref": "#/$defs/_HP_Method_Vanilla"
+        }
+      ],
+      "title": "Method"
+    },
+    "results_dir": {
+      "anyOf": [
+        {
+          "format": "path",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Results Dir"
+    },
+    "wandb_run_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Wandb Run Id"
+    }
+  },
+  "required": [
+    "$schema",
+    "task",
+    "langrt",
+    "llm_engine",
+    "method"
+  ],
+  "title": "HParams",
+  "type": "object"
+}

@@ -1,0 +1,261 @@
+###############################################################################
+#   generic config
+
+[langrt.py3]
+sandbox_root = "../../.untracked/.sandbox/"
+parallelism = 6
+
+[logger]
+hide_event_types = ["chat_history", "exec_result"]
+
+[misc]
+wandb_enabled = true
+wandb_project = "PaT"
+silent = false
+default_proxy = false
+
+###############################################################################
+#   LLM / Special purposes
+
+[llm.for_unittest]
+kind = "gpt"
+endpoint = "https://api.openai.com/v1"
+key = "********************************"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+model = "gpt-4o-mini-2024-07-18"
+mixin_mock_few_shot_prompt = true
+
+###############################################################################
+#   LLM / OpenAI or compatible endpoints
+
+[llm.gpt_35_turbo_230301]
+kind = "gpt"
+endpoint = "https://api.openai.com/v1"
+key = "********************************"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+model = "gpt-3.5-turbo-0301"
+opt_max_output_tokens = 4096
+mixin_mock_few_shot_prompt = true
+
+[llm.gpt_35_turbo_230613]
+kind = "gpt"
+endpoint = "https://api.openai.com/v1"
+key = "********************************"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+model = "gpt-3.5-turbo-0613"
+opt_max_output_tokens = 16385
+mixin_mock_few_shot_prompt = true
+
+[llm.gpt_35_turbo_231106]
+kind = "gpt"
+endpoint = "https://api.openai.com/v1"
+key = "********************************"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+model = "gpt-3.5-turbo-1106"
+opt_max_output_tokens = 16385
+mixin_mock_few_shot_prompt = true
+
+[llm.gpt_35_turbo_240125]
+kind = "gpt"
+endpoint = "https://api.openai.com/v1"
+key = "********************************"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+model = "gpt-3.5-turbo-0125"
+
+[llm.gpt_35_turbo_instruct_230914]
+kind = "gpt"
+endpoint = "https://api.openai.com/v1"
+key = "********************************"
+api_type = "open_ai"
+api_dialect = "completions"
+model = "gpt-3.5-turbo-instruct-0914"
+mixin_mock_few_shot_prompt = true
+
+[llm.gpt_4_turbo_231106]
+kind = "gpt"
+endpoint = "https://api.openai.com/v1"
+key = "********************************"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+model = "gpt-4-1106-preview"
+
+[llm.gpt_4_turbo_240409]
+kind = "gpt"
+endpoint = "https://api.openai.com/v1"
+key = "********************************"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+model = "gpt-4-turbo-2024-04-09"
+
+[llm.gpt_4o_240513]
+kind = "gpt"
+endpoint = "https://api.openai.com/v1"
+key = "********************************"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+model = "gpt-4o-2024-05-13"
+
+[llm.gpt_4o_240806]
+kind = "gpt"
+endpoint = "https://api.openai.com/v1"
+key = "********************************"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+model = "gpt-4o-2024-08-06"
+
+[llm.gpt_4o_241120]
+kind = "gpt"
+endpoint = "https://api.openai.com/v1"
+key = "********************************"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+model = "gpt-4o-2024-11-20"
+
+[llm.gpt_4o_mini_240718]
+kind = "gpt"
+endpoint = "https://api.openai.com/v1"
+key = "********************************"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+model = "gpt-4o-mini-2024-07-18"
+
+[llm.deepseek_chat_v3]
+kind = "gpt"
+endpoint = "https://api.deepseek.com"
+key = "********************************"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+model = "deepseek-chat"
+opt_max_sampling = 1
+mixin_mock_few_shot_prompt = true
+
+###############################################################################
+#   LLM / Azure OpenAI
+
+[llm.aoai_gpt]
+kind = "gpt"
+endpoint = "https://AZURE-ENDPOINT.openai.azure.com"
+key = "********************************"
+api_type = "azure"
+api_version = "2024-02-01"
+api_dialect = "chat_completions"
+engine = "YourModelDeploymentName"
+
+###############################################################################
+#   LLM / Locally hosted vLLMs
+
+[llm.codellama_7b_instruct]
+kind = "gpt"
+endpoint = "http://localhost:28101/v1"
+key = "token-codellama_7b_instruct"
+model = "/home/share/models/CodeLlama-7b-Instruct-hf"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+mixin_mock_few_shot_prompt = true
+mixin_code_model_format = true
+
+[llm.codellama_34b_instruct]
+kind = "gpt"
+endpoint = "http://localhost:28102/v1"
+key = "token-codellama_34b_instruct"
+model = "/home/share/models/CodeLlama-34b-Instruct-hf"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+mixin_mock_few_shot_prompt = true
+mixin_code_model_format = true
+
+[llm.llama3_8b_instruct]
+kind = "gpt"
+endpoint = "http://localhost:28103/v1"
+key = "token-llama3_8b_instruct"
+model = "/home/share/models/Meta-Llama-3-8B-Instruct"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+opt_stop_tokens = ["<|eot_id|>", "<|endoftext|>", "<|im_end|>"]
+mixin_mock_few_shot_prompt = true
+
+[llm.mistral_7b_instruct_2]
+kind = "gpt"
+endpoint = "http://localhost:28104/v1"
+key = "token-mistral_7b_instruct_2"
+model = "/home/share/models/Mistral-7B-Instruct-v0.2"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+mixin_mock_few_shot_prompt = true
+
+[llm.stablecode_3b_instruct]
+kind = "gpt"
+endpoint = "http://localhost:28105/v1"
+key = "token-stablecode_3b_instruct"
+model = "/home/share/models/stable-code-instruct-3b"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+mixin_mock_few_shot_prompt = true
+
+[llm.codestral_22b]
+kind = "gpt"
+endpoint = "http://localhost:28106/v1"
+key = "token-codestral_22b"
+model = "/home/share/models/Codestral-22B-v0.1"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+mixin_mock_few_shot_prompt = true
+
+[llm.starcoder2_15b]
+kind = "gpt"
+endpoint = "http://localhost:28107/v1"
+key = "token-starcoder2_15b"
+model = "/home/share/models/starcoder2-15b-instruct-v0.1"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+mixin_mock_few_shot_prompt = true
+mixin_mock_system_role = true
+
+[llm.qwen3_32b]
+kind = "gpt"
+endpoint = "http://localhost:28108/v1"
+key = "token-qwen3_32b"
+model = "/home/share/models/Qwen3-32B"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+mixin_mock_few_shot_prompt = true
+opt_max_output_tokens = 16385
+timeout = 300
+
+[llm.qwen3_14b]
+kind = "gpt"
+endpoint = "http://localhost:28109/v1"
+key = "token-qwen3_14b"
+model = "/home/share/models/Qwen3-14B"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+mixin_mock_few_shot_prompt = true
+opt_max_output_tokens = 16385
+timeout = 300
+
+[llm.qwen3_8b]
+kind = "gpt"
+endpoint = "http://localhost:28110/v1"
+key = "token-qwen3_8b"
+model = "/home/share/models/Qwen3-8B"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+mixin_mock_few_shot_prompt = true
+opt_max_output_tokens = 8192
+timeout = 180
+
+[llm.qwen3_4b]
+kind = "gpt"
+endpoint = "http://localhost:28111/v1"
+key = "token-qwen3_4b"
+model = "/home/share/models/Qwen3-4B"
+api_type = "open_ai"
+api_dialect = "chat_completions"
+mixin_mock_few_shot_prompt = true
+opt_max_output_tokens = 8192
+timeout = 180

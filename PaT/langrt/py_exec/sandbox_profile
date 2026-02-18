@@ -1,0 +1,8 @@
+(version 1)
+(debug deny)
+(allow default)
+(deny network*)
+(allow network* (local ip "localhost:*"))
+(allow network* (remote ip "localhost:*"))
+(allow network* (remote unix-socket))
+(deny file-write*)

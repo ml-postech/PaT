@@ -1,0 +1,29 @@
+# > conda create -y -n PaT python=3.10
+# > conda activate PaT
+
+# data science kit for code inside the executor
+matplotlib ~= 3.10.0
+numpy ~= 2.2.2
+pandas ~= 2.2.3
+scikit-learn ~= 1.6.1
+scipy ~= 1.15.1
+seaborn ~= 0.13.2
+sympy ~= 1.13.3
+
+# PaT
+autoflake ~= 2.3.1
+black ~= 24.10.0
+cachetools ~= 5.5.1
+openai ~= 1.60.1
+pydantic ~= 2.10.6
+pydantic_core ~= 2.27.2
+requests ~= 2.32.3
+rich ~= 13.9.4
+stdlib_list ~= 0.11.0
+toml ~= 0.10.2
+typing_extensions ~= 4.12.2
+
+# additional for eval or development
+pytest ~= 8.3.4
+ruff ~= 0.9.3
+wandb ~= 0.19.4

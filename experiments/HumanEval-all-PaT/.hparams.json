@@ -1,0 +1,30 @@
+{
+  "$schema": "../../PaT/eval/hparams.schema.json",
+  "task": {
+    "task_name": "HumanEval",
+    "task_samples": null
+  },
+  "langrt": "py3",
+  "llm_engine": "qwen3_8b",
+  "llm_engine_planner": "qwen3_8b",
+  "method": {
+    "method_name": "PaT",
+    "dfs_max_depth": 3,
+    "divide_gen_prompt": "humaneval_divide",
+    "divide_temperature": 0.2,
+    "divide_retries": 3,
+    "fc_root_test_prompt": "humaneval_funccall",
+    "fc_root_sys_test_prompt": "sys_test_args",
+    "fc_branch_test_prompt": "humaneval_funccall",
+    "fc_branch_sys_test_prompt": null,
+    "fc_temperature": 0.2,
+    "fc_retries": 3,
+    "conquer_gen_prompt": "humaneval_conquer",
+    "conquer_temperature": 0.8,
+    "conquer_samples": 5,
+    "conquer_min_samples": 3,
+    "conquer_retries": 3
+  },
+  "results_dir": null,
+  "wandb_run_id": null
+}
