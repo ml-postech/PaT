@@ -1,4 +1,4 @@
-# PaT: Planning-after-Trial for Efficient Code Generation
+# PaT: Planning-after-Trial for Efficient Test-Time Code Generation
 
 This repository contains the implementation of the **Planning-after-Trial (PaT)** framework, designed for robust and efficient code generation.
 
